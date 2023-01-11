@@ -1,13 +1,23 @@
 new Vue({
-    el: "#app",
-    data: {
-        todo: "",
-        list: ["hoge", "fuga"], //確認用データ
+  el: "#app",
+  data: {
+    todo: "",
+    list: [],
+  },
+  methods: {
+    sendTodo: function () {
+      this.list.push({
+        text: this.todo,
+        status: "todo",
+      });
+      this.todo = "";
     },
-    methods: {
-        sendTodo: function () {
-            this.list.push(this.todo);
-            this.todo = "";
-        }
+    doneTodo: function (item) {
+      if (item.status == "done") {
+        item.status = "todo";
+      } else {
+        item.status = "done";
+      }
     },
-})
+  },
+});
