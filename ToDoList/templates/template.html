@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="app">
-        <form>
+        <form v-on:submit.prevent="sendTodo">
             <input v-model="todo">
             <input type="submit" val="追加">
         </form>
