@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>simple vue</title>
+</head>
+<body>
+    <div id="app">
+        {{ counter }}
+        <div>
+            <button v-on:click="countUp">カウントアップ</button>
+        </div>
+        <div>
+            <p v-if="showFlag">表示されるかな</p>
+            <p v-else>表示されるのかな？</p>
+            <p v-show="showFlag">Showのテスト</p>
+        </div>
+        <div>
+            <ul>
+                <li v-for="item in items">
+                    {{item}}
+                </li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li v-for="(item, index) in items">
+                    {{item}} - {{index}}
+                </li>
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li v-for="(val, key, index) in dic">
+                    {{val}} - {{key}} - {{index}}
+                </li>
+            </ul>
+        </div>
+        <input v-model="firstName">
+        <input v-model="lastName">
+        <p>
+            {{ fullName }}
+        </p>
+        <br>
+        <div>
+            <input type="checkbox" id="checkbox" v-model="checked">
+            <label for="checked">{{ checked }}</label>
+        </div>
+        <div>
+            <input type="checkbox" id="kongou" value="Kongou" v-model="checkedlist">
+            <label for="kongou">Kongou</label>
+            <input type="checkbox" id="hiei" value="Hiei" v-model="checkedlist">
+            <label for="hiei">Hiei</label>
+            <br>
+            <span>
+                {{ checkedlist }}
+            </span>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data: {
+                counter:0,
+                showFlag:false,
+                items:["a","b","c"],
+                dic:{
+                    "a":"test_a",
+                    "b":"test_b",
+                    "c":"test_c",
+                },
+                firstName:"",
+                lastName:"",
+                checked:false,
+                checkedlist:[],
+            },
+            methods: {
+                countUp: function() {
+                    this.counter++;
+                }
+            },
+            computed: {
+                fullName: function() {
+                    return this.firstName + " " + this.lastName;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
