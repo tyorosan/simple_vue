@@ -1,5 +1,5 @@
-import { Vue } from "vue"
-import { Vuex } from "vuex"
+import Vue from "vue"
+import Vuex from "vuex"
 
 Vue.use(Vuex);
 
@@ -17,16 +17,17 @@ const store = new Vuex.Store({
   },
   actions :{
     increment (context) {
-      context.commit("increment")
+      context.commit("increment");
     },
     decrement (context) {
-      context.commit("decrement")
+      context.commit("decrement");
     }
   }
 });
 
 new Vue({
-  el: "#app",
+  el: ".app",
+  store,
   computed: {
     count() {
       return store.state.count;
